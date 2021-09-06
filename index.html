@@ -13,7 +13,6 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <script src= './js/init.js'></script>
   <script src= './js/login.js'></script>
   <style>
     html, body{
@@ -43,11 +42,12 @@
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">Log in</h4>
-      <form onsubmit="IngresoUsuarios()" action='main.html'> 
+      <!-- Formulario de ingreso -->
+      <form id='form'> 
         <p>Nota: para entrar, dejar Usuario y Password vacios o con espacios</p>
         <input type='text' id='user' placeholder='Ingrese usuario'>
         <input type='password' id="password" placeholder='Ingrese contraseña'>
-        <button type='submit'> Entrar </button>
+        <button type='Button' onclick="ValidarUsuario()"> Entrar </button>
       </form>
     </div>
   </div>
