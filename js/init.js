@@ -9,11 +9,13 @@ const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
 
 var showSpinner = function () {
-  document.getElementById("spinner-wrapper").style.display = "block";
+  document.getElementById("spinner-wrapper")
+  /* .style.display = "block"; */
 }
 
 var hideSpinner = function () {
-  document.getElementById("spinner-wrapper").style.display = "none";
+  document.getElementById("spinner-wrapper")
+/*   .style.display = "none"; */
 }
 
 var getJSONData = function (url) {
@@ -54,6 +56,9 @@ function llamarUsuario() {
   }
 }
 
+function cerrarSesion() {
+  localStorage.removeItem('usuario');
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los

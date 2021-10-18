@@ -1,46 +1,70 @@
 var newcomment = document.getElementById('newComment');
-var currentProduct = {};
+var currentProduct = [];
 var currentComments = [];
+var currentRelatedProductsArray = [];
+var productList = []
+
 
 /* función que muestra datos de un producto en el html*/
 function showProduct(productinfo) {
+    let htmlContentToAppend = ` `;
     currentProduct = productinfo
-    let htmlContentToAppend = `
-             <h3>`+ productinfo.name + `</h3>
-             <h6 class='text-muted'>` + productinfo.category + `</h6>
-             <div class="container col-15 d-flex w-100" id=imagesContainer>
-             <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-             <ol class="carousel-indicators">
-               <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-               <li data-target="#carouselIndicators" data-slide-to="1"></li>
-               <li data-target="#carouselIndicators" data-slide-to="2"></li>
-             </ol>
-             <div class="carousel-inner" id=carouselstart>
-             </div>
-             <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-               <span class="sr-only">Previo</span>
-             </a>
-             <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-               <span class="sr-only">Siguiente</span>
-             </a>
-           </div>
+    htmlContentToAppend = `
+        <h3>`+ productinfo.name + `</h3>
+        <h6 class='text-muted'>` + productinfo.category + `</h6>
+
+            <div class="container col-15 d-flex w-100" id=imagesContainer>
+                <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                 <ol class="carousel-indicators">
+                    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselIndicators" data-slide-to="2"></li>
+                 </ol>
+                 <div class="carousel-inner" id=carouselstart>
+                 </div>
+                 <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                 <span class="sr-only">Previo</span>
+                 </a>
+                 <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                 </a>
+                </div>
              </div>
              <div class="col">
                  <div class="d-flex w-100 justify-content-between">
                      <small class="text-muted">` + productinfo.soldCount + ` vendidos</small>
                  </div>
-                  <p class="mb-1">` + productinfo.description + `</p>
+                 <p class="mb-1">` + productinfo.description + `</p>
                  <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1"> Precio: `+ productinfo.cost + ' ' + productinfo.currency + `</h5>
                  </div>
              </div>
-            </div>`;
+             <br>
+             <br>`;
 /* le pido que agregue todo esto al div productInfo */
     document.getElementById('productInfo').innerHTML = htmlContentToAppend;
 }
 
+/* funcion que muestra los related products */
+function showRelatedProducts(currentRelatedProductsArray) {
+    let htmlContentToAppend = ` `;
+    relatedProductsArray = currentRelatedProductsArray;
+    for (let i = 0; i < currentProduct.relatedProducts.length; i++) {
+      let relatedProduct = relatedProductsArray[currentProduct.relatedProducts[i]]
+      htmlContentToAppend += `
+      <div>
+          <img src= "`+ relatedProduct.imgSrc + `" style='max-width:80px'> 
+          <p>` + relatedProduct.name + ` ` + relatedProduct.currency + relatedProduct.cost + `</p>
+       <a href="????"></a>
+       </div>`;
+/* le pido que agregue todo esto al div relatedProducts */
+document.getElementById('relatedProducts').innerHTML = htmlContentToAppend
+}
+} 
+
+ 
 /* función que muestra imágenes en el carousel dentro del div productInfo,
 comienza por la primera imagen (0) como item activo y luego va agregando otras si hubiera más*/
 function showImages(currentImages) {
@@ -48,7 +72,7 @@ function showImages(currentImages) {
     let htmlContentToAppend = `
       <div class="carousel-item active">
         <img src="` + currentImages[0] + `" class="d-block w-100" alt="">
-      </div>`
+          </div>`
     for (let i = 1; i < currentImages.length; i++) {
         let image = currentImages[i];
         htmlContentToAppend += `
@@ -72,6 +96,8 @@ function showComments(currentComments) {
     }
 };
 
+
+
 /* una vez se le da enviar al comentario, crea uno nuevo al final de los comentarios ya existentes*/
 newcomment.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -88,15 +114,19 @@ newcomment.addEventListener("submit", function (e) {
     document.querySelector('input[name="rating"]:checked').checked = false
 });
 
-/* le pido que ejecute las funciones de mostrar producto e imágenes luego de obtener los datos del json*/
+/* le pido que ejecute las funciones de la info del producto luego de obtener los datos del json*/
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-            showProduct(resultObj.data);
-            showImages(resultObj.data);
-        }
-    })
-});
+    getJSONData(PRODUCT_INFO_URL).then(function (prodInfo) {
+        if (prodInfo.status === "ok") {
+            showProduct(prodInfo.data);
+            showImages(prodInfo.data); 
+
+/* Json anidado*/
+     getJSONData(PRODUCTS_URL).then(function (allProds) {
+            if (allProds.status === "ok") {
+                showRelatedProducts(allProds.data);
+}})}
+})});
 
 
 /* le pido que ejecute la función de mostrar comentarios luego de obtener los datos del json*/

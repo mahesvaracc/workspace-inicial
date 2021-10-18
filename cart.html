@@ -32,8 +32,8 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
 </head>
-
 <body>
+
  <!-- Entrega 3: navbar responsive -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
   <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
@@ -50,38 +50,64 @@
       <li class="nav-item active">
         <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       </li>
+      <!-- Entrega 4: dropdown usuario -->
       <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a> 
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="my-profile.html" id=Perfil>Perfil</a> 
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="Perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+          <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+          <a class="dropdown-item" href="sell.html">Vender</a>
+          <a class="dropdown-item" href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+      </div>
       </li>
     </ul>
   </nav> 
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  
+
+  <div class="container">
+    <h3>Carrito</h3>
+      <table class="table">
+          <thead>
+            <tr>
+             <th>Producto</th>
+             <th>Precio</th>
+             <th>Cantidad</th>
+             <th>Subtotal</th>
+             <th></th>
+            </tr>
+          </thead>
+          <tbody id="carrito"></tbody>
+      </table>
     </div>
+
+  <div class="container">
+    <h3>Subtotal</h3>
+        <span id="subtotalcarrito"></span>
   </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+
+  <div class="container">
+      <h3>Envío</h3>
+          <select>
+             <option selected='true' disabled='disabled'>Seleccionar</option>
+            <option>Opción A</option>
+            <option>Opción B</option>
+             <option>Opción C</option>
+          </select>
   </div>
+
+  <div class='container'>
+      <h3>Total</h3>
+        <span id="total"></span>
+  </div>          
+
+ 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/init.js"></script>
 </body>
 
 </html>

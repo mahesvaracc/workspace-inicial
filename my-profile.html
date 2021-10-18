@@ -35,44 +35,36 @@
 
 <body>
  <!-- Entrega 3: navbar responsive -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
-    <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse " id="menu">
-      <ul class="navbar-nav mr-auto container d-flex flex-column flex-md-row justify-content-between">
-        <li class="nav-item active">
-          <a class="nav-link py-2 d-none d-md-inline-block"  href="main.html">Inicio</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a> 
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link py-2 d-none d-md-inline-block" href="my-profile.html" id=Perfil>Perfil</a> 
-        </li>
-      </ul>
-    </nav> 
-    
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
+  <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="menu">
+    <ul class="navbar-nav mr-auto container d-flex flex-column flex-md-row justify-content-between">
+      <li class="nav-item active">
+        <a class="nav-link py-2 d-none d-md-inline-block"  href="main.html">Inicio</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+      </li>
+      <!-- Entrega 4: dropdown usuario -->
+      <li class="nav-item active">
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="Perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+          <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+          <a class="dropdown-item" href="sell.html">Vender</a>
+          <a class="dropdown-item" href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
+        </div>
+      </div>
+      </li>
+    </ul>
+  </nav> 
 
-  <!-- BARRA ORIGINAL   <nav class="site-header sticky-top py-1 bg-dark">
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="main.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" href="my-profile.html" id=Perfil>Perfil</a>
-    </div>
-  </nav> -->
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h4 class="alert-heading">¡A trabajar! :)</h4>
