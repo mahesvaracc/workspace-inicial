@@ -34,45 +34,63 @@
 </head>
 
 <body>
- <!-- Entrega 3: navbar responsive -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
-  <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse " id="menu">
-    <ul class="navbar-nav mr-auto container d-flex flex-column flex-md-row justify-content-between">
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block"  href="main.html">Inicio</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      </li>
-      <!-- Entrega 4: dropdown usuario -->
-      <li class="nav-item active">
-        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="Perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
-          <a class="dropdown-item" href="cart.html">Mi Carrito</a>
-          <a class="dropdown-item" href="sell.html">Vender</a>
-          <a class="dropdown-item" href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
+  <!-- Entrega 3: navbar responsive -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
+    <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="menu">
+      <ul class="navbar-nav mr-auto container d-flex flex-column flex-md-row justify-content-between">
+        <li class="nav-item active">
+          <a class="nav-link py-2 d-none d-md-inline-block" href="main.html">Inicio</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+        </li>
+        <!-- Entrega 4: dropdown usuario -->
+        <li class="nav-item active">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="Perfil" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+              <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+              <a class="dropdown-item" href="sell.html">Vender</a>
+              <a class="dropdown-item" href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+  </nav>
+
+
+  <!-- Contenedor general -->
+  <div class="container">
+    <div class="col">
+      <div class="row">
+        <div class="col mb-3">
+          <div class='form-group'>
+<!-- Formulario con los datos requeridos de la entrega-->
+            <label class='form-control'>Nombre:  <input type="text" id='user-name'></label><br>
+            <label class='form-control'>Edad:  <input type="number" id='user-age'></label><br>
+            <label class='form-control'>Email:  <input type="email" id='user-email'></label><br>
+            <label class='form-control'>Teléfono:  <input type="tel" id='user-tel'></label><br>
+<!-- Input con función para que muestre la imagen, con preview incluido -->
+            <input type="file" onchange='previewFile()' placeholder='' name="" id="input-img">
+            <img id='user-img' src="" height='200' alt="avatar"><br>
+<!-- Botón que guarda los cambios realizados-->
+            <button class='btn btn-primary' id='user-save' onclick="saveProfile()">Guardar</button>
+          </div>
         </div>
       </div>
-      </li>
-    </ul>
-  </nav> 
-
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
   </div>
+
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>

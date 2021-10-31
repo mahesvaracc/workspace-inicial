@@ -61,11 +61,10 @@ pero igual me muestre los productos aunque no se haya filtrado:*/
         ( (maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost)))
             { 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
+            <div class = "col-sm-12 col-lg-4 col-md-6">
+            <a href='product-info.html' class="card mb-4 shadow-sm custom-card">
+                    <img class='bd-placeholder-img card-img-top' src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+ 
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ product.name + `</h4>
@@ -74,10 +73,11 @@ pero igual me muestre los productos aunque no se haya filtrado:*/
                         <p class="mb-1">` + product.description + `</p>
                         <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"> Precio: `+ product.cost + ' ' + product.currency + `</h5>
+                        </div>
                     </div>
-                    </div>
-                </div>
             </a>
+            </div>
+            
             `
         }
     }
