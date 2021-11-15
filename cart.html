@@ -32,82 +32,182 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
 </head>
+
 <body>
 
- <!-- Entrega 3: navbar responsive -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
-  <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse " id="menu">
-    <ul class="navbar-nav mr-auto container d-flex flex-column flex-md-row justify-content-between">
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block"  href="main.html">Inicio</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      </li>
-      <!-- Entrega 4: dropdown usuario -->
-      <li class="nav-item active">
-        <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="Perfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
-          <a class="dropdown-item" href="cart.html">Mi Carrito</a>
-          <a class="dropdown-item" href="sell.html">Vender</a>
-          <a class="dropdown-item" href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
-        </div>
-      </div>
-      </li>
-    </ul>
-  </nav> 
-  
+  <!-- Entrega 3: navbar responsive -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark site-header sticky-top py-1 bg-dark">
+    <button class="navbar-toggler" data-target="#menu" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="menu">
+      <ul class="navbar-nav mr-auto container d-flex flex-column flex-md-row justify-content-between">
+        <li class="nav-item active">
+          <a class="nav-link py-2 d-none d-md-inline-block" href="main.html">Inicio</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+        </li>
+        <!-- Entrega 4: dropdown usuario -->
+        <li class="nav-item active">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="Perfil" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+              <a class="dropdown-item" href="cart.html">Mi Carrito</a>
+              <a class="dropdown-item" href="sell.html">Vender</a>
+              <a class="dropdown-item" href="index.html" onclick="cerrarSesion()">Cerrar Sesión</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
+
+
+  <!-- ENTREGA 5: -->
   <div class="container">
-    <h3>Carrito</h3>
+    <br>
+    <h3 class='text-center'><b> Mi Carrito</b> </h3>
+    <br>
+    <div class="table-responsive-md ">
       <table class="table">
-          <thead>
-            <tr>
-             <th>Producto</th>
-             <th>Precio</th>
-             <th>Cantidad</th>
-             <th>Subtotal</th>
-             <th></th>
-            </tr>
-          </thead>
-          <tbody id="carrito"></tbody>
+        <thead>
+          <tr>
+            <th style="width:50%" class='th-sm text-center' scope="col">Producto</th>
+            <th style="width:20%" class='th-sm text-center' scope="col">Precio</th>
+            <th class='th-sm text-center' scope="col">Cantidad</th>
+            <th style="width:20%" class='th-sm text-center' scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="carrito"></tbody>
       </table>
     </div>
-
-  <div class="container">
-    <h3>Subtotal</h3>
-        <span id="subtotalcarrito"></span>
   </div>
-
+<!-- ENTREGA 7 agregados: -->
   <div class="container">
-      <h3>Envío</h3>
-          <select>
-             <option selected='true' disabled='disabled'>Seleccionar</option>
-            <option>Opción A</option>
-            <option>Opción B</option>
-             <option>Opción C</option>
-          </select>
+    <h4>Seleccione envío:</h4>
+    <div class='form-check'>
+      <input class="form-check-input" type="radio" name="metodoenvio" id="metodoenvio1" checked onclick="updateTotal()"
+        value='0.15'>
+      <label class="form-check-label" for="metodoenvio1">
+        Premium 15% costo (2-5 días)
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="metodoenvio" id="metodoenvio2" onclick="updateTotal()"
+        value='0.07'>
+      <label class="form-check-label" for="metodoenvio3">
+        Express 10% costo(5-8 días)
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="metodoenvio" id="metodoenvio3" onclick="updateTotal()"
+        value='0.05'>
+      <label class="form-check-label" for="metodoenvio3">
+        Standard 5% costo (12-15 días)
+      </label>
+    </div>
   </div>
+  <br>
 
+  <div class="container table-responsive-md">
+    <table class="table table-bordered">
+      <h4>Costo:</h4>
+    <tbody >
+      <tr>
+        <td>Subtotal:</td>
+        <td id="subtotalCarrito"></td>
+      </tr>
+      <tr>
+        <td>Envío:</td>
+        <td id="costoenvio"></td>
+      </tr>
+      <tr>
+        <td><b>Total</b></td>
+        <td id="total"></td>
+      </tr>
+    </tbody>
+
+    </table>
+  </div>
+  
+<!-- ENTREGA 7 Boton modal -->
   <div class='container'>
-      <h3>Total</h3>
-        <span id="total"></span>
-  </div>          
+    <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Pagar </button>
+  </div>
+    <!-- ENTREGA 7 Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">MÉTODO DE PAGO</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action='compraexitosa.html'>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="metododepago" id="metododepago1" checked onclick="validatePago()">
+                <label>Tarjeta de crédito</label>
 
+                <div class="col-12 px-4">
+                  <div class="d-flex mb-4"> <span class="">
+                      <label class="text-muted">Número:</label> <input class="form-control camposTarjeta" type="text" value=""
+                        pattern="[0-9]{8,}" inputmode="numeric" maxlength='19' placeholder="1234 5678 9012 3456" required 
+                       >
+                    </span>
+                    <div class=" w-100 d-flex flex-column align-items-end">
+                      <label class="text-muted">Expira:</label> <input size='5' maxlength='5' class="form-control camposTarjeta" type="text"
+                        value="" placeholder="MM/YY" pattern="[0-9]{2}/[0-9]{2}" required >
+                    </div>
+                  </div>
+
+                  <div class="d-flex mb-5"> <span class="me-5">
+                      <label class="text-muted">Nombre:</label> <input class="form-control camposTarjeta" type="text" pattern='[a-zA-Z]{1,}'
+                        value="" placeholder="Name" required >
+                    </span>
+                    <div class="w-100 d-flex flex-column align-items-end">
+                      <label class="text-muted">CVC: </label> <input class="form-control camposTarjeta" type="text" value="" maxlength='3'
+                        pattern='[0-9]{3}' placeholder="XXX" required>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="metododepago" id="metododepago2" onclick="validatePago()">
+                <label>Transferencia Bancaria</label>
+                <div class="col-12 px-4">
+                  <div class="d-flex mb-4"> <span class=""> 
+                      <label class="text-muted">Número de cuenta:</label> <input class="form-control camposTransferencia" type="text" value=""
+                        pattern="[0-9]{7,}" inputmode="numeric" maxlength='12' placeholder="123456789012" disabled>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary" >Pagar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
  
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="js/init.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/init.js"></script>
 </body>
 
 </html>
